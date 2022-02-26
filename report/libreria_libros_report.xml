@@ -1,0 +1,32 @@
+<odoo>
+    <record id="libreria.libros_report" model="ir.actions.report">
+        <field name="name"> Informe de libros</field>
+        <field name="model">libreria.libros</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">libreria.libros_report_view</field>
+        <field name="report_file">libreria.libros_report</field>
+        <field name="binding_model_id" ref="model_libreria_libros"/>
+        <field name="binding_type">report</field>
+
+    </record>
+
+    <template id="libros_report_view">
+        <t t-call="web.html_container">
+            <!-- muestra datos de la empresa (salta página) -->
+            <t t-call="web.external_layout">
+                <h1>Libros </h1><br />
+                <t t-foreach="docs" t-as="libros">
+                    <ul>
+                        <li>    id:  <span t-field="libros.name" /></li>
+                        <li>    titulo:  <span t-field="libros.titulo" /></li>
+                        <li>    autor:  <span t-field="libros.autor" /></li>
+                        <li>    editorial:  <span t-field="libros.editorial" /></li>
+                        <li>    fecha_lanzamiento:  <span t-field="libros.fecha_lanzamiento" /></li>
+
+                    </ul>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

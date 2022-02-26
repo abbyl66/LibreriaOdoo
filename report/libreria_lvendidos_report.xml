@@ -1,0 +1,31 @@
+<odoo>
+    <record id="libreria.lvendidos_report" model="ir.actions.report">
+        <field name="name"> Informe de libros vendidos</field>
+        <field name="model">libreria.lvendidos</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">libreria.lvendidos_report_view</field>
+        <field name="report_file">libreria.lvendidos_report</field>
+        <field name="binding_model_id" ref="model_libreria_lvendidos"/>
+        <field name="binding_type">report</field>
+
+    </record>
+
+    <template id="lvendidos_report_view">
+        <t t-call="web.html_container">
+            <!-- muestra datos de la empresa (salta página) -->
+            <t t-call="web.external_layout">
+                <h1>Libros vendidos</h1><br />
+                <t t-foreach="docs" t-as="lvendidos">
+                    <ul>
+                        <li>    id:  <span t-field="lvendidos.name" /></li>
+                        <li>    id Libro:  <span t-field="lvendidos.idLibro" /></li>
+                        <li>    unidades:  <span t-field="lvendidos.unidades" /></li>
+                        <li>    total:  <span t-field="lvendidos.total" /></li>
+
+                    </ul>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

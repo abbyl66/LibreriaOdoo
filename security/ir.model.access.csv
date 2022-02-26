@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_libreria_libros_usuario,libreria.libros.usuario,model_libreria_libros,libreria.group_libreria_usuario,1,0,0,0
+access_libreria_libros_administrador,libreria.libros.administrador,model_libreria_libros,libreria.group_libreria_administrador,1,1,1,1_
+
+access_libreria_lvendidos_usuario,libreria.lvendidos.usuario,model_libreria_lvendidos,libreria.group_libreria_usuario,1,0,0,0
+access_libreria_lvendidos_administrador,libreria.lvendidos.administrador,model_libreria_lvendidos,libreria.group_libreria_administrador,1,1,1,1_
+
+access_libreria_leditoriales_usuario,libreria.leditoriales.usuario,model_libreria_leditoriales,libreria.group_libreria_usuario,1,0,0,0
+access_libreria_leditoriales_administrador,libreria.leditoriales.administrador,model_libreria_leditoriales,libreria.group_libreria_administrador,1,1,1,1_
+
+
+

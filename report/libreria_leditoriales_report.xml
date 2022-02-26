@@ -1,0 +1,31 @@
+<odoo>
+    <record id="libreria.leditoriales_report" model="ir.actions.report">
+        <field name="name"> Informe de editoriales</field>
+        <field name="model">libreria.leditoriales</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">libreria.leditoriales_report_view</field>
+        <field name="report_file">libreria.leditoriales_report</field>
+        <field name="binding_model_id" ref="model_libreria_leditoriales"/>
+        <field name="binding_type">report</field>
+
+    </record>
+
+    <template id="leditoriales_report_view">
+        <t t-call="web.html_container">
+            <!-- muestra datos de la empresa (salta página) -->
+            <t t-call="web.external_layout">
+                <h1>Libros </h1><br />
+                <t t-foreach="docs" t-as="leditoriales">
+                    <ul>
+                        <li>    id:  <span t-field="leditoriales.name" /></li>
+                        <li>    nombre:  <span t-field="leditoriales.nombre" /></li>
+                        <li>    fundador:  <span t-field="leditoriales.fundador" /></li>
+                        <li>    libros:  <span t-field="leditoriales.libros" /></li>
+
+                    </ul>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

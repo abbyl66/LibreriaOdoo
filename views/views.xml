@@ -1,0 +1,265 @@
+<odoo>
+  <data>
+      <!-- Vistas de persona-->
+
+    <record model="ir.ui.view" id="libreria.libros_list_view">
+      <field name="name">libreria.libros.view.tree</field>
+      <field name="model">libreria.libros</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="titulo"/>
+          <field name="autor"/>
+          <field name="editorial"/>
+          <field name="fecha_lanzamiento"/>
+        </tree>
+      </field>
+    </record>
+
+<!-- search -->
+
+    <record model="ir.ui.view" id="libreria.libros_search_view">
+      <field name="name">libreria.libros.view.search</field>
+      <field name="model">libreria.libros</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="titulo"/>
+          <field name="autor"/>
+          <field name="editorial"/>
+          <field name="fecha_lanzamiento"/>
+          <group>
+            <filter name="group_by_titulo" string="titulo" context="{'gropup_by':'titulo'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- form -->
+
+    <record model="ir.ui.view" id="libreria.libros_form_view">
+      <field name="name">libreria.libros.view.form</field>
+      <field name="model">libreria.libros</field>
+      <field name="arch" type="xml">
+        <form string="Información libro">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                ID <field name="name" placeholder="ID"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Información"/>
+                <field name="titulo"/>
+                <field name="autor"/>
+                <field name="editorial"/>
+                <field name="fecha_lanzamiento"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+
+    </record>
+
+
+
+<!-- calendar -->
+
+    <record model="ir.ui.view" id="libreria.libros_calendar_view">
+      <field name="name">libreria.libros.view.calendar</field>
+      <field name="model">libreria.libros</field>
+      <field name="arch" type="xml">
+        <calendar string="Fecha publicación" date_start="fecha_lanzamiento" mode="month">
+          <field name="name"/>
+          <field name="titulo"/>
+          <field name="autor"/>
+          <field name="editorial"/>
+        </calendar>
+      </field>
+    </record>
+
+
+
+
+    <!-- Definición de menús-->
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="libreria.libros_action_window">
+      <field name="name">Libros</field>
+      <field name="res_model">libreria.libros</field>
+      <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <menuitem name="libreria" id="libreria.menu_root" web_icon="libreria,static/description/icon.png"/>
+
+    <menuitem name="Libros" id="libreria.menu_libros" parent="libreria.menu_root"/>
+    <menuitem name="Libros guardados" id="libreria.menu_libros_list" parent="libreria.menu_libros"
+              action="libreria.libros_action_window"/>
+
+
+
+    <!--Segundo modelo-->
+     <record model="ir.ui.view" id="libreria.lvendidos_list_view">
+      <field name="name">libreria.lvendidos.view.tree</field>
+      <field name="model">libreria.lvendidos</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="idLibro"/>
+          <field name="unidades"/>
+          <field name="total"/>
+        </tree>
+      </field>
+    </record>
+
+<!-- search -->
+
+    <record model="ir.ui.view" id="libreria.lvendidos_search_view">
+      <field name="name">libreria.lvendidos.view.search</field>
+      <field name="model">libreria.lvendidos</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="idLibro"/>
+          <field name="unidades"/>
+          <field name="total"/>
+          <group>
+            <filter name="group_by_idLibro" string="idLibro" context="{'gropup_by':'idLibro'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- form -->
+
+    <record model="ir.ui.view" id="libreria.lvendidos_form_view">
+      <field name="name">libreria.lvendidos.view.form</field>
+      <field name="model">libreria.lvendidos</field>
+      <field name="arch" type="xml">
+        <form string="Información venta">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                ID <field name="name" placeholder="ID"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Información"/>
+                <field name="idLibro"/>
+                <field name="unidades"/>
+                <field name="total"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+
+    </record>
+
+
+    <!-- Definición de menús-->
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="libreria.lvendidos_action_window">
+      <field name="name">Libros vendidos</field>
+      <field name="res_model">libreria.lvendidos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="libreria" id="libreria.menu_root" web_icon="libreria,static/description/icon.png"/>
+
+    <menuitem name="libros vendidos" id="libreria.menu_lvendidos" parent="libreria.menu_root"/>
+    <menuitem name="Libros vendidos" id="libreria.menu_lvendidos_list" parent="libreria.menu_lvendidos"
+              action="libreria.lvendidos_action_window"/>
+
+
+
+    <!--Tercer modelo-->
+     <record model="ir.ui.view" id="libreria.leditoriales_list_view">
+      <field name="name">libreria.leditoriales.view.tree</field>
+      <field name="model">libreria.leditoriales</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="fundador"/>
+          <field name="libros"/>
+        </tree>
+      </field>
+    </record>
+
+<!-- search -->
+
+    <record model="ir.ui.view" id="libreria.leditoriales_search_view">
+      <field name="name">libreria.leditoriales.view.search</field>
+      <field name="model">libreria.leditoriales</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="fundador"/>
+          <field name="libros"/>
+          <group>
+            <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- form -->
+
+    <record model="ir.ui.view" id="libreria.leditoriales_form_view">
+      <field name="name">libreria.leditoriales.view.form</field>
+      <field name="model">libreria.leditoriales</field>
+      <field name="arch" type="xml">
+        <form string="Información editorial">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                ID <field name="name" placeholder="ID"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Información"/>
+                <field name="nombre"/>
+                <field name="fundador"/>
+                <field name="libros"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+
+    </record>
+
+
+    <!-- Definición de menús-->
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="libreria.leditoriales_action_window">
+      <field name="name">Editoriales</field>
+      <field name="res_model">libreria.leditoriales</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="libreria" id="libreria.menu_root" web_icon="libreria,static/description/icon.png"/>
+
+    <menuitem name="Editoriales" id="libreria.menu_leditoriales" parent="libreria.menu_root"/>
+    <menuitem name="Editoriales guardadas" id="libreria.menu_leditoriales_list" parent="libreria.menu_leditoriales"
+              action="libreria.leditoriales_action_window"/>
+
+  </data>
+</odoo>
